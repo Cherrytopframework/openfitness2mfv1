@@ -1,19 +1,16 @@
 import React from 'react';
-// import Providers from 'app/AppProvider';
+// @ts-ignore
+import Providers from 'mf2/AppProvider';
 import AppRouter from './components/routes/Router';
-
-// import AppWrapper from './components/App/AppWrapper';
 
 const Entry = () => {
     return (
         <React.StrictMode>
-            <AppRouter />
-            {/* <Providers path={false}>
-                {() => <AppRouter/>}
-                {(response) => response && <AppWrapper data={response} />}
-            </Providers> */}
+            <Providers path={({ schema }: { schema: string }) => schema}>
+                {(response: any) => response && <AppRouter data={response} />}
+            </Providers>
         </React.StrictMode>
     )
 }
 
-export default Entry
+export default Entry;

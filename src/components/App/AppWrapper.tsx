@@ -14,17 +14,15 @@ import { useUtilityStore } from 'mf2/utilities/store/utilityStore';
 import App from './App';
 
 
-const AppWrapper = ({ stores }: { stores?: any }) => {
-    // const { utilityStore, confirm } = stores;
-    // const utilityStore = useUtilityStore();
+const AppWrapper = ({ stores, data }: { stores?: any, data?: any }) => {
+    const { utilityStore } = stores;
     console.log("AppWrapper.stores: ", stores);
     return (
         <>
             <App />
-            {/* <App stores={{ utilityStore, confirm }} /> */}
-            {/* <BottomNavigation 
+            <BottomNavigation 
                 items={["Weight", "Food", "Exercise", "Sleep", "Steps"]} 
-                onClick={(item) => utilityStore.setDrawer({ 
+                onClick={(item: string) => utilityStore.setDrawer({ 
                     open: true, 
                     anchor: "bottom",
                     onOpen: () => {},
@@ -67,8 +65,8 @@ const AppWrapper = ({ stores }: { stores?: any }) => {
                                             boxStyle: { width: "40vw" },
                                             content: (
                                                 <FormContainer
-                                                    schema={data.find(({ table }) => (table === item.toLowerCase()))}
-                                                    onSubmit={(submission) => {
+                                                    schema={data.find(({ table }: { table: string }) => (table === item.toLowerCase()))}
+                                                    onSubmit={(submission: any) => {
                                                         console.log(
                                                             "BottomNavigation.QueryWrapper.FormContainer.SUBMISSION: ", 
                                                             submission
@@ -84,8 +82,8 @@ const AppWrapper = ({ stores }: { stores?: any }) => {
                             </>
                         ) : (
                             <FormContainer
-                                schema={data.find(({ table }) => (table === item.toLowerCase()))}
-                                onSubmit={(submission) => {
+                                schema={data.find(({ table }: { table: string }) => (table === item.toLowerCase()))}
+                                onSubmit={(submission: any) => {
                                     console.log(
                                         "BottomNavigation.QueryWrapper.FormContainer.SUBMISSION: ", 
                                         submission,
@@ -97,7 +95,7 @@ const AppWrapper = ({ stores }: { stores?: any }) => {
                             />
                         )
                 })} 
-            /> */}
+            />
         </>
     )
 }

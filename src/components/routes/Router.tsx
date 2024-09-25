@@ -3,32 +3,39 @@ import {
     RouterProvider,
 } from "react-router-dom";
 // mfe components / remote modules
-// import BottomNavigation from 'app/BottomNavigation';
-// import ChatBox from 'app/ChatBox';
-// import FormContainer from 'app/FormContainer';
-// import Navbar from 'app/Navbar';
-// import Tabs from 'app/Tabs';
-// import { useConfirm } from 'app/ConfirmProvider';
-// import { useUtilityStore } from 'app/utilities/store/utilityStore';
+// import BottomNavigation from 'mf2/BottomNavigation';
+// import ChatBox from 'mf2/ChatBox';
+// import FormContainer from 'mf2/FormContainer';
+// import Navbar from 'mf2/Navbar';
+// import Tabs from 'mf2/Tabs';
+// @ts-ignore
+import { useConfirm } from 'mf2/ConfirmProvider';
+// @ts-ignore
+import { useUtilityStore } from 'mf2/utilities/store/utilityStore';
 // local modules
-import App from '../App';
+// import App from '../App';
 // import Chat from '../Chat/Chat';
 // import { navbarSchema } from '../config/navbarSchema';
 import AppWrapper from '../App/AppWrapper';
 
 
-function AppRouter() {
-    // const utilityStore = useUtilityStore();
-    // const confirm = useConfirm();
+function AppRouter(props: any) {
+    const utilityStore = useUtilityStore();
+    const confirm = useConfirm();
 
     const appRoutes = [
-        {
-            path: "/",
-            element: (<App />),
-        },
+        // {
+        //     path: "/",
+        //     element: (<App />),
+        // },
         {
             path: "/*",
-            element: (<AppWrapper />),
+            element: (
+                <AppWrapper 
+                    data={props.data} 
+                    stores={{ utilityStore, confirm }} 
+                />
+            ),
         },
         {
             path: "/test",
