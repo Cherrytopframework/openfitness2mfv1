@@ -1,9 +1,14 @@
-import React from 'react';
+
 // mfe components / remote modules
+// @ts-ignore
 import BottomNavigation from 'mf2/BottomNavigation';
+// @ts-ignore
 import FormContainer from 'mf2/FormContainer';
+// @ts-ignore
 import ChatBox from 'mf2/ChatBox';
+// @ts-ignore
 import Tabs from 'mf2/Tabs';
+// @ts-ignore
 import { useUtilityStore } from 'mf2/utilities/store/utilityStore';
 // local modules
 import App from './App';
@@ -11,12 +16,13 @@ import App from './App';
 
 const AppWrapper = ({ stores }: { stores?: any }) => {
     // const { utilityStore, confirm } = stores;
-    const utilityStore = useUtilityStore();
+    // const utilityStore = useUtilityStore();
+    console.log("AppWrapper.stores: ", stores);
     return (
         <>
             <App />
             {/* <App stores={{ utilityStore, confirm }} /> */}
-            <BottomNavigation 
+            {/* <BottomNavigation 
                 items={["Weight", "Food", "Exercise", "Sleep", "Steps"]} 
                 onClick={(item) => utilityStore.setDrawer({ 
                     open: true, 
@@ -82,7 +88,8 @@ const AppWrapper = ({ stores }: { stores?: any }) => {
                                 onSubmit={(submission) => {
                                     console.log(
                                         "BottomNavigation.QueryWrapper.FormContainer.SUBMISSION: ", 
-                                        submission
+                                        submission,
+                                        stores
                                     );
                                     utilityStore.setDrawer({ open: false, anchor: "bottom", content: (<></>) });
                                 }}
@@ -90,7 +97,7 @@ const AppWrapper = ({ stores }: { stores?: any }) => {
                             />
                         )
                 })} 
-            />
+            /> */}
         </>
     )
 }

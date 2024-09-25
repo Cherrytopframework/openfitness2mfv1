@@ -1,4 +1,4 @@
-import React from 'react';
+// @ts-ignore
 import NavMenu from 'mf2/NavMenu';
 
 
@@ -12,7 +12,7 @@ import NavMenu from 'mf2/NavMenu';
 // ... display in the drawer and determine drawers position
 // ... cart is linked to its own store that can be accessed anywhere in the app
 // ... cart drawer will use the state in the cart store to render its view
-export const navbarSchema = ({ utilityStore, navigate }) => ({
+export const navbarSchema = ({ utilityStore, navigate }: any) => ({
     left: {
         items: [
             {
