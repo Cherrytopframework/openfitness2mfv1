@@ -1,20 +1,21 @@
 {
   "name": "openfitness",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "dev": "rsbuild dev --open",
     "pro": "concurrently \"npm run test\" \"npm run dev\"",
-    "build": "rsbuild build",
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "rbuild": "rsbuild build",
     "serve": "rspack serve",
-    "preview": "rsbuild preview",
-    "all": "../_run.sh"
+    "preview": "rsbuild preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "Michael Woodward",
   "license": "ISC",
   "dependencies": {
     "react": "^18.3.1",
