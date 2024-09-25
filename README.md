@@ -1,0 +1,8 @@
+# openfitness
+
+## Quick Start
+...
+
+## Configuration
+...
+
