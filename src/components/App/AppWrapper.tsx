@@ -14,12 +14,12 @@ import { useUtilityStore } from 'mf2/utilities/store/utilityStore';
 import App from './App';
 
 
-const AppWrapper = ({ stores, data }: { stores?: any, data?: any }) => {
+const AppWrapper = ({ stores, data, ...props }: { stores?: any, data?: any }) => {
     const { utilityStore } = stores;
-    console.log("AppWrapper.stores: ", stores);
+    console.logs("AppWrapper.stores: ", stores, props);
     return (
         <>
-            <App />
+            <App {...props} stores={stores} />
             <BottomNavigation 
                 items={["Weight", "Food", "Exercise", "Sleep", "Steps"]} 
                 onClick={(item: string) => utilityStore.setDrawer({ 
@@ -45,7 +45,7 @@ const AppWrapper = ({ stores, data }: { stores?: any, data?: any }) => {
                                             label: "Search"
                                         },
                                     ]}
-                                    onChange={(value: string) => console.log("The search tab changed: ", value)}
+                                    onChange={(value: string) => console.logs("The search tab changed: ", value)}
                                     renderContent={(value: string) => (
                                         <div>
                                             <pre>
@@ -57,7 +57,7 @@ const AppWrapper = ({ stores, data }: { stores?: any, data?: any }) => {
                                 />
                                 <ChatBox 
                                     handleSend={(send: any) => {
-                                        console.log("send Callback from host app: ", send)
+                                        console.logs("send Callback from host app: ", send)
                                         utilityStore.setDrawer({ open: false, anchor: "bottom", content: (<></>) });
                                         setTimeout(() => utilityStore.setDrawer({ 
                                             open: true, 
@@ -67,7 +67,7 @@ const AppWrapper = ({ stores, data }: { stores?: any, data?: any }) => {
                                                 <FormContainer
                                                     schema={data.find(({ table }: { table: string }) => (table === item.toLowerCase()))}
                                                     onSubmit={(submission: any) => {
-                                                        console.log(
+                                                        console.logs(
                                                             "BottomNavigation.QueryWrapper.FormContainer.SUBMISSION: ", 
                                                             submission
                                                         );
@@ -84,7 +84,7 @@ const AppWrapper = ({ stores, data }: { stores?: any, data?: any }) => {
                             <FormContainer
                                 schema={data.find(({ table }: { table: string }) => (table === item.toLowerCase()))}
                                 onSubmit={(submission: any) => {
-                                    console.log(
+                                    console.logs(
                                         "BottomNavigation.QueryWrapper.FormContainer.SUBMISSION: ", 
                                         submission,
                                         stores
